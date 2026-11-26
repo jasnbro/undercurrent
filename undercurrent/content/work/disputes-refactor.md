@@ -1,6 +1,6 @@
 # disputes data refactor
 
-*a clearer data model for disputes reporting*
+*making disputes data easier to work with*
 
 ---
 
@@ -14,7 +14,7 @@ Three problems made reporting difficult to maintain:
 - **Legacy data quality.** Joining historical records produced results that were difficult to interpret.
 - **Duplicated logic.** Analysts repeatedly wrote the same joins, creating opportunities for reporting logic to diverge.
 
-For financial reporting, choosing the wrong identifier can change the reported results.
+What concerned me was that two analysts could start with the same data and arrive at different answers simply because they chose different keys.
 
 ---
 
@@ -58,4 +58,4 @@ The main risk was inaccurate reporting during and after the change. We used sour
 
 **Plan adoption alongside implementation.** The model was ready before the people using it were. We hadn't communicated the change broadly or in enough detail, which slowed adoption and led to repeated one-on-one conversations.
 
-Next time, I'd communicate the change earlier, publish a migration guide mapping old columns to the new tables, and establish a deprecation date for the old model. A technically sound model is only useful when people know how to work with it.
+Next time, I'd communicate the change earlier, publish a migration guide mapping old columns to the new tables, and establish a deprecation date for the old model. I should have given the transition as much thought as the model itself.
