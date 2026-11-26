@@ -8,15 +8,13 @@
 
 A cash bonus campaign needs to answer two questions reliably: who qualifies, and what reward have they earned? I wanted the system to retain enough information to explain those decisions, including when a customer didn't qualify.
 
-<!-- TODO(Jasmine): confirm the "before" picture. Was it one table, built by hand or by a script? Who maintained it? Is there one concrete failure, without bank details, that shows why it had to change? -->
+Before this, a single table and a single process handled eligibility, rewards, and payment notification together, with no granular reason codes. The data could show what happened to an account, but not why.
 
 ---
 
 ## My role
 
-I designed and built the pipeline over about five months, working with Marketing to translate campaign rules into eligibility and reward logic.
-
-<!-- TODO(Jasmine): name anyone you partnered with by role only (e.g. "Marketing's campaign owner"), and say whether anyone else built part of it. -->
+I designed and built the pipeline over about five months, working with the director of operations and operations line-of-business managers to translate campaign rules into eligibility, tracking, and reward logic.
 
 ---
 
@@ -46,9 +44,7 @@ Accounts that pass Reward go to the business in a notification, with the rewards
 
 ## The risk
 
-An incorrect decision can affect a customer. Reason codes let people review and investigate any outcome, and the checks at payout catch what changed after the account was found eligible. Neither replaces validating the business logic itself.
-
-<!-- TODO(Jasmine): how was it validated before the first real payouts? Parallel run, sample review with Marketing, reconciliation against source? -->
+An incorrect decision can affect a customer. Reason codes let people review and investigate any outcome, and the checks at payout catch what changed after the account was found eligible. Neither replaces validating the business logic itself. Before the first payouts, I tested the business logic and the system with test data.
 
 ---
 
