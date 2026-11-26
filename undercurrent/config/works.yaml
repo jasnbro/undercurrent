@@ -45,7 +45,7 @@ works:
     tagline: making disputes data easier to trust and use
     tier: more
     order: 2
-    published: false   # flip to true once the diagram exists
+    published: true
     summary:
       - >-
         Cash App's disputes reporting ran on two versioned tables with
