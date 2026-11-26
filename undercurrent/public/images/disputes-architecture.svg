@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="Disputes data refactor: Salesforce, Snowflake JSON events, shared Snowflake customer and location tables, and Google Sheets feed the refactored model, where case, transaction and customer tables feed a reporting mart with shared joins built once for analysts. The model was checked against source system counts before cutover and monitored with data quality checks afterward.">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9a94a8"/>
+    </marker>
+    <style>
+      .mono { font-family: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace; }
+      .serif { font-family: "Cormorant Garamond", "EB Garamond", Georgia, serif; }
+      .box { fill: none; stroke: #cfc6b4; stroke-width: 1; }
+      .outer { fill: none; stroke: #7d778b; stroke-width: 1; }
+      .mod { fill: #2e2b38; stroke: #d9e36b; stroke-width: 1; }
+      .label { fill: #e8e0d0; font-size: 14px; }
+      .sub { fill: #9a94a8; font-size: 11.5px; }
+      .muted { fill: #7d778b; }
+      .accent { fill: #d9e36b; }
+      .line { stroke: #9a94a8; stroke-width: 1; fill: none; }
+      .rule { stroke: #3a3644; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect width="900" height="620" fill="#24212c"/>
+
+  <text x="40" y="44" class="mono sub" letter-spacing="1">DISPUTES / DATA MODEL</text>
+
+  <!-- sources -->
+  <text x="40" y="100" class="mono sub muted" letter-spacing="1">SOURCES</text>
+  <rect x="40" y="140" width="190" height="56" class="box"/>
+  <text x="135" y="173" text-anchor="middle" class="mono label">salesforce</text>
+  <rect x="40" y="210" width="190" height="56" class="box"/>
+  <text x="135" y="234" text-anchor="middle" class="mono label">snowflake</text>
+  <text x="135" y="253" text-anchor="middle" class="mono sub">json events</text>
+  <rect x="40" y="280" width="190" height="56" class="box"/>
+  <text x="135" y="304" text-anchor="middle" class="mono label">snowflake</text>
+  <text x="135" y="323" text-anchor="middle" class="mono sub">customer, location tables</text>
+  <rect x="40" y="350" width="190" height="56" class="box"/>
+  <text x="135" y="383" text-anchor="middle" class="mono label">google sheets</text>
+
+  <path d="M230,168 L266,168" class="line" marker-end="url(#arrow)"/>
+  <path d="M230,238 L266,238" class="line" marker-end="url(#arrow)"/>
+  <path d="M230,308 L266,308" class="line" marker-end="url(#arrow)"/>
+  <path d="M230,378 L266,378" class="line" marker-end="url(#arrow)"/>
+
+  <!-- refactored model -->
+  <text x="270" y="100" class="mono sub muted" letter-spacing="1">MODEL</text>
+  <rect x="270" y="126" width="430" height="294" class="outer"/>
+
+  <rect x="290" y="173" width="160" height="56" class="box"/>
+  <text x="370" y="206" text-anchor="middle" class="mono label">cases</text>
+  <rect x="290" y="245" width="160" height="56" class="box"/>
+  <text x="370" y="278" text-anchor="middle" class="mono label">transactions</text>
+  <rect x="290" y="317" width="160" height="56" class="box"/>
+  <text x="370" y="350" text-anchor="middle" class="mono label">customers</text>
+
+  <path d="M450,201 L486,249" class="line" marker-end="url(#arrow)"/>
+  <path d="M450,273 L486,273" class="line" marker-end="url(#arrow)"/>
+  <path d="M450,345 L486,297" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="490" y="213" width="190" height="120" class="mod"/>
+  <text x="508" y="261" class="serif" font-size="25" fill="#e8e0d0">reporting mart</text>
+  <text x="508" y="287" class="mono sub">joins built once</text>
+  <text x="508" y="307" class="mono sub">cleaned history</text>
+
+  <!-- consumers -->
+  <text x="740" y="100" class="mono sub muted" letter-spacing="1">CONSUMERS</text>
+  <path d="M680,273 L736,273" class="line" marker-end="url(#arrow)"/>
+  <rect x="740" y="245" width="130" height="56" class="box"/>
+  <text x="805" y="278" text-anchor="middle" class="mono label">analysts</text>
+
+  <!-- checks -->
+  <line x1="40" y1="452" x2="870" y2="452" class="rule"/>
+  <text x="40" y="484" class="mono sub muted" letter-spacing="1">HOW WE CHECKED IT</text>
+  <rect x="40" y="500" width="405" height="64" class="mod"/>
+  <text x="64" y="528" class="mono label accent">source system counts</text>
+  <text x="64" y="550" class="mono sub">before cutover, instead of the old tables</text>
+  <rect x="465" y="500" width="405" height="64" class="box"/>
+  <text x="489" y="528" class="mono label">data quality checks (anomalo)</text>
+  <text x="489" y="550" class="mono sub">after cutover, ongoing</text>
+
+  <text x="40" y="604" class="mono sub muted">snowflake · prefect · 2022–2023</text>
+</svg>
