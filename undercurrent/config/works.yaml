@@ -18,7 +18,7 @@ works:
 
   - slug: pipelinetools
     title: pipelinetools
-    tagline: shared code for recurring ETL work
+    tagline: making shared logic easier to maintain
     tier: featured
     order: 1
     published: true
@@ -42,7 +42,7 @@ works:
 
   - slug: disputes-refactor
     title: disputes data refactor
-    tagline: a clearer data model for disputes reporting
+    tagline: making disputes data easier to work with
     tier: more
     order: 1
     published: false   # flip to true once the diagram exists
@@ -87,7 +87,7 @@ works:
   
   - slug: cash-bonus
     title: cash bonus
-    tagline: traceable eligibility and reward decisions
+    tagline: understanding why a customer qualified
     tier: featured
     order: 2
     published: false   # when the diagram exists: flip to true, and set pipelinetools to tier: more
@@ -97,7 +97,7 @@ works:
         and reward decisions with version history and reason codes.
       - >-
         I used an append-only payout log and a unique constraint to prevent
-        duplicate rewards on reruns.
+        duplicate payout records on reruns.
     link:
       label: view case study
       url: /work/cash-bonus
@@ -123,7 +123,7 @@ works:
 
   - slug: gym-log
     title: gym log
-    tagline: a configurable home workout log
+    tagline: a workout plan I can change without changing the app
     tier: side
     order: 2
     published: true
