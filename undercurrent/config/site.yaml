@@ -6,8 +6,8 @@
 meta:
   title: undercurrent
   description: >-
-    jasmine brooks-beltran, data systems engineer. Systems that quiet the
-    problems you don't want to think about.
+    jasmine brooks-beltran, data systems engineer. I build reliable data
+    systems and practical tools for everyday life.
 
 header:
   brand: undercurrent
@@ -34,11 +34,12 @@ hero:
     position: right 75%   # CSS object-position, for cropping on narrow screens
   intro:
     - >-
-      I build systems that quiet the problems you don't want to think about,
-      so you have more space for the ones you do.
+      I build systems that make complicated work easier to understand
+      and maintain, so people can spend less time managing the systems
+      they rely on.
     - >-
-      Ten years in data systems: pipelines, orchestration, and the
-      infrastructure underneath them.
+      I've spent ten years in data, building pipelines and data models,
+      orchestrating workflows, and improving the infrastructure behind them.
   links:
     - label: linkedin
       url: https://www.linkedin.com/in/jasnbro/
