@@ -1,5 +1,9 @@
 import { execFileSync } from 'node:child_process';
 import assert from 'node:assert/strict';
+import { loadContent } from '../src/lib/content.mjs';
+// Unpublished case studies must 404. Read them from works.yaml so publishing
+// one doesn't break this test.
+const draftWorks = loadContent().works.filter(w => !w.published && w.source).map(w => w.link.url.replace(/\/?$/, '/'));
 const docker = (...args) => execFileSync('docker', args, { encoding: 'utf8' }).trim();
 const suffix = `${process.pid}-${Date.now()}`;
 const image = `undercurrent-test:${suffix}`;
@@ -20,7 +24,7 @@ try {
     await new Promise(resolve => setTimeout(resolve, 1000));
   }
   const get = path => fetch(base + path, { redirect: 'manual', signal: AbortSignal.timeout(5000) });
-  for (const path of ['/', '/work/pipelinetools/', '/how-to-work-with-me/', '/notes/', '/images/hero-hillside.jpg', '/images/pipelinetools-architecture.svg']) {
+  for (const path of ['/', '/work/pipelinetools/', '/work/disputes-refactor/', '/how-to-work-with-me/', '/notes/', '/images/hero-hillside.jpg', '/images/pipelinetools-architecture.svg']) {
     assert.equal((await get(path)).status, 200, path);
   }
   const home = await get('/');
@@ -35,7 +39,7 @@ try {
   assert.equal(asset.status, 200);
   assert.match(asset.headers.get('cache-control'), /immutable/);
   assert.equal(asset.headers.get('x-content-type-options'), 'nosniff');
-  for (const path of ['/missing', '/notes/what-data-organizations-get-wrong/', '/work/disputes-refactor/', '/_astro/missing.css']) assert.equal((await get(path)).status, 404, path);
+  for (const path of ['/missing', '/notes/what-data-organizations-get-wrong/', ...draftWorks, '/_astro/missing.css']) assert.equal((await get(path)).status, 404, path);
   const redirect = await get('/work/pipelinetools');
   assert.equal(redirect.status, 301);
   assert.equal(redirect.headers.get('location'), '/work/pipelinetools/');

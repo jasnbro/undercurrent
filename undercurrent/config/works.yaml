@@ -45,7 +45,7 @@ works:
     tagline: making disputes data easier to trust and use
     tier: more
     order: 2
-    published: false   # flip to true once the diagram exists
+    published: true
     summary:
       - >-
         Cash App's disputes reporting ran on two versioned tables with
@@ -70,7 +70,7 @@ works:
     tagline: from one person's PC to the production floor
     tier: more
     order: 3
-    published: false   # no diagram needed; flip to true when the copy is final
+    published: true
     summary:
       - >-
         I reverse-engineered a Mercedes-Benz plant's Access database and
