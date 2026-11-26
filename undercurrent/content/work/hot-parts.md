@@ -54,4 +54,4 @@ Because staff relied on the system to coordinate production, we ran the Access d
 
 ---
 
-The lesson for me was that replacing a technology isn't enough. The people who rely on the new system need to be able to use and maintain it after the original builders have moved on.
+What stays with me about this project is how much knowledge was tied to one person. Replacing Access addressed part of the problem. Making that knowledge accessible to the next person matters just as much.
