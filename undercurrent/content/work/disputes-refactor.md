@@ -8,13 +8,11 @@
 
 At Cash App, disputes reporting relied on a pair of versioned tables with more than 50 columns covering cases, transactions, and customers. The team called them the big nasty. We worked with Snowflake, Prefect, and Google Sheets in 2022–2023.
 
-Three problems made reporting difficult to maintain:
+Three things worried me:
 
-- **Inconsistent identifiers.** Customers and transactions each had more than one ID, and which ones a record carried depended on the legacy code that produced it. Joining related data meant first working out which keys were actually there.
-- **Legacy data quality.** Joining historical records produced results that were difficult to interpret.
-- **Duplicated logic.** Analysts repeatedly wrote the same joins, creating opportunities for reporting logic to diverge.
-
-My concerns were maintainability, accuracy, and ease of use. The pipeline broke often, and we struggled to resolve those breaks. Poor data quality in the legacy code made accuracy hard to trust. And the tables took more effort to use than they should have.
+- **Maintainability.** The pipeline broke often from schema drift and changing data types, and those breaks were hard to resolve.
+- **Accuracy.** Legacy data quality was poor, so the numbers were hard to trust.
+- **Ease of use.** Customers and transactions each had more than one ID, and which ones a record carried depended on the legacy code that produced it. Analysts had to work out the keys and rebuild the same joins themselves, and each copy could drift from the others.
 
 ---
 
@@ -48,7 +46,7 @@ The main risk was inaccurate reporting during and after the change. We used sour
 
 - Faster reporting queries, with commonly needed transaction information already joined
 - Cleaner historical records
-- Fewer pipeline incidents related to schema drift
+- Fewer pipeline incidents from schema drift and changing data types
 - Shared reporting logic maintained in one place rather than across analyst queries
 - Documentation explaining the model and the reasoning behind its design
 
