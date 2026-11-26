@@ -1,6 +1,6 @@
 # pipelinetools
 
-*making shared logic easier to maintain*
+*one place to maintain shared logic*
 
 ---
 
@@ -37,7 +37,7 @@ I used a single entry point around patterns the team already knew and added cred
 
 ## The risk
 
-Centralizing code concentrates the consequences of a mistake. To help manage that risk, I standardized the Python version and pinned package versions across the team's environment. That gave the library a known set of dependencies and reduced variation between machines. It did not eliminate the need for testing.
+Centralizing code concentrates the consequences of a mistake. To help manage that risk, I standardized the Python version and pinned package versions across the team's environment. That gave the library a known set of dependencies and reduced variation between machines.
 
 ---
 
@@ -55,4 +55,4 @@ PipelineTools supports a YAML-configured batch process and an API integration, i
 
 ---
 
-I'd rather spend the next Python upgrade working through the changes themselves than finding every place the same code was copied.
+The goal was to make the next Python upgrade one change instead of 182.

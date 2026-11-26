@@ -1,6 +1,6 @@
 # disputes data refactor
 
-*making disputes data easier to work with*
+*making disputes data easier to trust and use*
 
 ---
 
@@ -56,4 +56,4 @@ The main risk was inaccurate reporting during and after the change. We used sour
 
 **Plan adoption alongside implementation.** The model was ready before the people using it were. We hadn't communicated the change broadly or in enough detail, which slowed adoption and led to repeated one-on-one conversations.
 
-Next time, I'd communicate the change earlier, publish a migration guide mapping old columns to the new tables, and establish a deprecation date for the old model. I should have given the transition as much thought as the model itself.
+Next time, I'd communicate the change earlier, publish a migration guide mapping old columns to the new tables, and establish a deprecation date for the old model.

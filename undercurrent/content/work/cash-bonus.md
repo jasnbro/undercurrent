@@ -1,6 +1,6 @@
 # cash bonus
 
-*understanding why a customer qualified*
+*a reason behind every reward decision*
 
 ---
 
@@ -28,7 +28,7 @@ Campaign rules from Marketing become versioned campaign terms. Every account the
 
 - **Eligibility** checks the account when it opens: the promo code, the account and its owner, anti-gaming rules, and whether it opened during the offer period
 - **Tracking** checks whether the customer did what their tier asked, such as direct deposits, balance, and statement cycles, inside the tracking window
-- **Reward** checks the account again right before paying
+- **Reward** checks the account again right before payout
 
 Accounts that pass Reward go to the business in a notification, with the rewards to pay attached.
 
@@ -38,7 +38,7 @@ Accounts that pass Reward go to the business in a notification, with the rewards
 
 **Record why a decision was made.** Storing the result alone would have been simpler, but it wouldn't help someone understand why a customer qualified or didn't. I chose to keep the reasons with the decisions so reviewing an outcome doesn't require reconstructing the logic from scratch.
 
-**Check again right before paying.** Eligibility is decided when an account opens, and a lot can change before payout. The Reward stage reruns the checks that matter at that moment: the account still qualifies, it's in good standing, and the customer hasn't already been paid a bonus of the same type, including from an earlier campaign. An account can be eligible on day one and still be disqualified at payout, and when it is, the reason is recorded. Accounts that were already paid or disqualified aren't picked up again, so a rerun doesn't pay twice.
+**Check again right before payout.** Eligibility is decided when an account opens, and a lot can change before payout. The Reward stage reruns the checks that matter at that moment: the account still qualifies, it's in good standing, and the customer hasn't already been paid a bonus of the same type, including from an earlier campaign. An account can be eligible on day one and still be disqualified at payout, and when it is, the reason is recorded. Accounts that were already paid or disqualified aren't picked up again on a rerun. The pipeline decides who is ready to be paid; the business makes the payment.
 
 ---
 
@@ -52,7 +52,7 @@ An incorrect decision can affect a customer. Reason codes let people review and 
 
 - The SQL pipeline is in production and supports customer payouts
 - Eligibility and reward outcomes retain their reasons and version history
-- Payout re-checks each account, so changes after opening and prior rewards are caught before money moves
+- Payout re-checks each account, so changes after opening and prior rewards are caught before the business pays out
 
 ---
 

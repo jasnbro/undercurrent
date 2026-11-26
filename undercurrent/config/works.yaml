@@ -18,14 +18,14 @@ works:
 
   - slug: pipelinetools
     title: pipelinetools
-    tagline: making shared logic easier to maintain
+    tagline: one place to maintain shared logic
     tier: featured
     order: 1
     published: true
     summary:
       - >-
-        I consolidated database connectors, credential handling, and
-        environment setup into a shared Python library for ETL pipelines.
+        A shared Python library I built to consolidate database connectors,
+        credential handling, and environment setup across ETL pipelines.
       - >-
         A Python migration required manual updates to 182 legacy scripts.
         Centralizing that logic gives the team one place to make changes,
@@ -42,15 +42,15 @@ works:
 
   - slug: disputes-refactor
     title: disputes data refactor
-    tagline: making disputes data easier to work with
+    tagline: making disputes data easier to trust and use
     tier: more
     order: 1
     published: false   # flip to true once the diagram exists
     summary:
       - >-
-        I led a refactor of Cash App's disputes reporting, separating two
-        versioned tables with competing identifiers into entity tables
-        and a reporting mart for analysts.
+        Cash App's disputes reporting ran on two versioned tables with
+        inconsistent identifiers. I led the refactor into entity tables and
+        a reporting mart for analysts.
       - >-
         We validated against source system counts rather than reproducing
         known gaps in the old model, then added ongoing data quality checks.
@@ -83,18 +83,18 @@ works:
   
   - slug: cash-bonus
     title: cash bonus
-    tagline: understanding why a customer qualified
+    tagline: a reason behind every reward decision
     tier: featured
     order: 2
     published: false   # when the diagram exists: flip to true, and set pipelinetools to tier: more
     summary:
       - >-
-        I designed and built a cash bonus pipeline that records eligibility
-        and reward decisions with version history and reason codes.
+        Every eligibility and reward decision in this pipeline, yes or no,
+        is versioned and carries a reason code. I designed and built it.
       - >-
-        Payout checks every account again right before paying, including
-        prior rewards, so an account can be eligible on day one and still be
-        disqualified, with a reason, at payout.
+        The reward stage re-checks every account before payout, including
+        prior rewards, so an account eligible on day one can still be
+        disqualified, with a reason.
     link:
       label: view case study
       url: /work/cash-bonus

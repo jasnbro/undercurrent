@@ -34,9 +34,7 @@ hero:
     position: right 75%   # CSS object-position, for cropping on narrow screens
   intro:
     - >-
-      I like understanding how systems work, where they break down,
-      and what would make them more useful. I build things that let
-      people spend less time maintaining the systems they rely on.
+      I build systems that lighten the load for people and machines alike.
     - >-
       I've spent ten years in data, building pipelines and data models,
       orchestrating workflows, and improving the infrastructure behind them.
