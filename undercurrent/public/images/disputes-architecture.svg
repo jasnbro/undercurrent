@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="Disputes data refactor: Salesforce, Snowflake JSON events and Google Sheets feed the refactored model, where case, transaction and customer tables each have one canonical identifier and feed a reporting mart with shared joins built once for analysts. The model was checked against source system counts before cutover and monitored with data quality checks afterward.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="Disputes data refactor: Salesforce, Snowflake JSON events, shared Snowflake customer and location tables, and Google Sheets feed the refactored model, where case, transaction and customer tables each have one canonical identifier and feed a reporting mart with shared joins built once for analysts. The model was checked against source system counts before cutover and monitored with data quality checks afterward.">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#9a94a8"/>
@@ -24,46 +24,50 @@
 
   <!-- sources -->
   <text x="40" y="100" class="mono sub muted" letter-spacing="1">SOURCES</text>
-  <rect x="40" y="150" width="150" height="56" class="box"/>
-  <text x="115" y="183" text-anchor="middle" class="mono label">salesforce</text>
-  <rect x="40" y="230" width="150" height="56" class="box"/>
-  <text x="115" y="254" text-anchor="middle" class="mono label">snowflake</text>
-  <text x="115" y="273" text-anchor="middle" class="mono sub">json events</text>
-  <rect x="40" y="310" width="150" height="56" class="box"/>
-  <text x="115" y="343" text-anchor="middle" class="mono label">google sheets</text>
+  <rect x="40" y="140" width="190" height="56" class="box"/>
+  <text x="135" y="173" text-anchor="middle" class="mono label">salesforce</text>
+  <rect x="40" y="210" width="190" height="56" class="box"/>
+  <text x="135" y="234" text-anchor="middle" class="mono label">snowflake</text>
+  <text x="135" y="253" text-anchor="middle" class="mono sub">json events</text>
+  <rect x="40" y="280" width="190" height="56" class="box"/>
+  <text x="135" y="304" text-anchor="middle" class="mono label">snowflake</text>
+  <text x="135" y="323" text-anchor="middle" class="mono sub">customer, location tables</text>
+  <rect x="40" y="350" width="190" height="56" class="box"/>
+  <text x="135" y="383" text-anchor="middle" class="mono label">google sheets</text>
 
-  <path d="M190,178 L226,178" class="line" marker-end="url(#arrow)"/>
-  <path d="M190,258 L226,258" class="line" marker-end="url(#arrow)"/>
-  <path d="M190,338 L226,338" class="line" marker-end="url(#arrow)"/>
+  <path d="M230,168 L266,168" class="line" marker-end="url(#arrow)"/>
+  <path d="M230,238 L266,238" class="line" marker-end="url(#arrow)"/>
+  <path d="M230,308 L266,308" class="line" marker-end="url(#arrow)"/>
+  <path d="M230,378 L266,378" class="line" marker-end="url(#arrow)"/>
 
-  <!-- the big nasty, refactored -->
-  <rect x="230" y="116" width="470" height="300" class="outer"/>
-  <text x="254" y="154" class="serif" font-size="26" fill="#e8e0d0">the big nasty, refactored</text>
+  <!-- refactored model -->
+  <text x="270" y="100" class="mono sub muted" letter-spacing="1">MODEL</text>
+  <rect x="270" y="126" width="430" height="294" class="outer"/>
 
-  <rect x="254" y="186" width="170" height="56" class="box"/>
-  <text x="339" y="210" text-anchor="middle" class="mono label">cases</text>
-  <text x="339" y="229" text-anchor="middle" class="mono sub">one canonical id</text>
-  <rect x="254" y="258" width="170" height="56" class="box"/>
-  <text x="339" y="282" text-anchor="middle" class="mono label">transactions</text>
-  <text x="339" y="301" text-anchor="middle" class="mono sub">one canonical id</text>
-  <rect x="254" y="330" width="170" height="56" class="box"/>
-  <text x="339" y="354" text-anchor="middle" class="mono label">customers</text>
-  <text x="339" y="373" text-anchor="middle" class="mono sub">one canonical id</text>
+  <rect x="290" y="173" width="160" height="56" class="box"/>
+  <text x="370" y="197" text-anchor="middle" class="mono label">cases</text>
+  <text x="370" y="216" text-anchor="middle" class="mono sub">one canonical id</text>
+  <rect x="290" y="245" width="160" height="56" class="box"/>
+  <text x="370" y="269" text-anchor="middle" class="mono label">transactions</text>
+  <text x="370" y="288" text-anchor="middle" class="mono sub">one canonical id</text>
+  <rect x="290" y="317" width="160" height="56" class="box"/>
+  <text x="370" y="341" text-anchor="middle" class="mono label">customers</text>
+  <text x="370" y="360" text-anchor="middle" class="mono sub">one canonical id</text>
 
-  <path d="M424,214 L470,262" class="line" marker-end="url(#arrow)"/>
-  <path d="M424,286 L470,286" class="line" marker-end="url(#arrow)"/>
-  <path d="M424,358 L470,310" class="line" marker-end="url(#arrow)"/>
+  <path d="M450,201 L486,249" class="line" marker-end="url(#arrow)"/>
+  <path d="M450,273 L486,273" class="line" marker-end="url(#arrow)"/>
+  <path d="M450,345 L486,297" class="line" marker-end="url(#arrow)"/>
 
-  <rect x="474" y="226" width="200" height="120" class="mod"/>
-  <text x="492" y="274" class="serif" font-size="25" fill="#e8e0d0">reporting mart</text>
-  <text x="492" y="300" class="mono sub">shared joins, built once</text>
-  <text x="492" y="320" class="mono sub">cleaned history</text>
+  <rect x="490" y="213" width="190" height="120" class="mod"/>
+  <text x="508" y="261" class="serif" font-size="25" fill="#e8e0d0">reporting mart</text>
+  <text x="508" y="287" class="mono sub">joins built once</text>
+  <text x="508" y="307" class="mono sub">cleaned history</text>
 
   <!-- consumers -->
   <text x="740" y="100" class="mono sub muted" letter-spacing="1">CONSUMERS</text>
-  <path d="M674,286 L736,286" class="line" marker-end="url(#arrow)"/>
-  <rect x="740" y="258" width="130" height="56" class="box"/>
-  <text x="805" y="291" text-anchor="middle" class="mono label">analysts</text>
+  <path d="M680,273 L736,273" class="line" marker-end="url(#arrow)"/>
+  <rect x="740" y="245" width="130" height="56" class="box"/>
+  <text x="805" y="278" text-anchor="middle" class="mono label">analysts</text>
 
   <!-- checks -->
   <line x1="40" y1="452" x2="870" y2="452" class="rule"/>
