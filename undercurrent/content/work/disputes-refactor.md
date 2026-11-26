@@ -14,7 +14,7 @@ Three problems made reporting difficult to maintain:
 - **Legacy data quality.** Joining historical records produced results that were difficult to interpret.
 - **Duplicated logic.** Analysts repeatedly wrote the same joins, creating opportunities for reporting logic to diverge.
 
-What concerned me was that two analysts could start with the same data and arrive at different answers simply because they chose different keys.
+My concerns were maintainability, accuracy, and ease of use. The pipeline broke often, and we struggled to resolve those breaks. Poor data quality in the legacy code made accuracy hard to trust. And the tables took more effort to use than they should have.
 
 ---
 
