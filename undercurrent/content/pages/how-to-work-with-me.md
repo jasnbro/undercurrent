@@ -1,51 +1,50 @@
 # How to work with me
 
-> **Short version:** I'm a data systems engineer. I turn fuzzy, repetitive, or fragile problems into systems people can trust, and then I try to make those systems boring. I do my best work when I understand the *why*, have room to shape the *how*, and work with people who say what they actually think.
+> **Short version:** I'm a data systems engineer. I build pipelines, data models, and tools that make complicated work easier to do and maintain. I do my best work when I understand the problem, have room to exercise technical judgment, and work with people who are willing to share what they know.
 
 ---
 
 ## <i data-lucide="workflow"></i> What I'm good at
 
-I work in the space between building and architecture: close enough to the code to ship it, far enough out to notice when the real problem is the system around it.
+I enjoy both designing systems and building them. Working close to the code helps me understand where a design holds up in practice and where it needs to change.
 
 - data pipelines and ingestion
+- data modeling
 - workflow orchestration
 - data quality and operational reliability
 - Python and SQL backend work
-- turning one-off processes into reusable patterns
-- making legacy or under-documented systems easier to reason about
+- turning repeated processes into reusable tools
+- making legacy and under-documented systems easier to maintain
 
-When a task lands, I'm also looking at what surrounds it: where the data comes from, who depends on it, what breaks in six months, and whether anyone should be doing this by hand at all.
+When someone brings me a data problem, I want to understand where the data comes from, how it's used, who depends on it, and what the team will need to maintain over time. Sometimes the most useful change is outside the pipeline itself.
 
-**In practice:** I built PipelineTools, a shared Python library that consolidated the code every ETL process on my team kept rewriting: database connectors, project scaffolding, credential generation and rotation, and environment variable management. Any pipeline running in the team's managed environment can use the same library instead of carrying its own copy, so a Python package or library change means one update instead of one per pipeline. It's in production behind a YAML-configured batch process and a Qualys API integration, where it handles credential rotation and endpoint ingestion. Centralizing it also concentrated the risk, since a breaking change now reaches every pipeline at once, so I paired it with active management of the team's Python environment to keep that contained.
+**In practice:** I built PipelineTools after noticing the same database connectors, credential handling, environment setup, and project scaffolding repeated across my team's ETL scripts. I consolidated that code into a shared Python library so changes could be made in one place. The library is in production, supporting a YAML-configured batch process and an API integration. Sharing the code also meant a breaking change could affect multiple pipelines, so I paired the library with a managed Python environment to help contain that risk.
 
 ---
 
 ## <i data-lucide="wrench"></i> What I believe about systems
 
-Good systems reduce the attention people have to spend on them. The best infrastructure is quiet. It doesn't ask anyone to remember seven steps, doesn't depend on one person knowing the magic incantation, and doesn't create a hero every time it runs.
+Good infrastructure reduces the attention people have to spend on it. I want the people using a system to understand how it works, trust its output, and know what to do when something goes wrong.
 
-That's the idea behind **undercurrent**, the name of this site: systems that sit underneath work and life and carry some of the load.
+That's the idea behind **undercurrent**: systems that sit underneath work and life and carry some of the load.
 
-A few opinions I hold:
+A few principles guide my work:
 
-- **Tables and pipelines are interfaces for people.** If someone has to ask the author what a table's grain is, what a column means, or how a pipeline behaves, the design isn't finished.
-- **Documentation is part of the system, not cleanup after it.** It gives the next engineer, human or agent, enough context to understand what exists, why it exists, and what's already been tried.
-- **If a pipeline can't be explained on one page,** it's either too complicated or nobody understands it well enough yet.
-- **A failed pipeline should explain itself:** what happened, where, and which data was affected. If someone has to rerun it or open the code to find out, the logging is incomplete.
-- **If a team can't explain the what, why, and how of a standard,** it needs either better teaching or a better standard.
+- **Tables and pipelines are interfaces for people.** Make the grain, column definitions, and expected behavior clear to the people who rely on them.
+- **Documentation is part of the system.** The next engineer should be able to understand what exists, why decisions were made, and what has already been tried.
+- **Complexity should serve a purpose.** I use a one-page explanation as a check on whether a pipeline's design is understood well enough.
+- **Failures should be easy to investigate.** Logs should help identify what failed, where it happened, and which data was affected without requiring someone to recreate the problem.
+- **Standards should have a reason.** A team should understand what a standard addresses, why it matters, and how to apply it. If that isn't clear, it's worth revisiting the standard or how it's taught.
 
 ---
 
 ## <i data-lucide="message-square-text"></i> Communication and feedback
 
-I'm direct, but I'm not trying to win. I like conversations where people say what they think, show their reasoning, and change their minds when the evidence changes. That includes me.
+I'm direct and curious. When an explanation doesn't hold together, I ask questions. I appreciate working with people who explain their reasoning, challenge my assumptions, and bring expertise I don't have.
 
-I work best when the goal is explicit, context is shared rather than rationed, tradeoffs are named, and every decision has an owner.
+I work best when we share context, agree on what we're trying to accomplish, and make tradeoffs explicit. I have opinions, but I'm willing to change my mind when the evidence supports a different approach.
 
-If I'm asking a lot of questions, I'm building the model. Questions are how I learn a system.
-
-On feedback, specific beats softened. Instead of:
+I prefer specific feedback. Instead of:
 
 > "Maybe think about communicating differently."
 
@@ -53,59 +52,58 @@ I'd rather hear:
 
 > "In that meeting, you went three levels deeper than the decision required. The group lost the thread."
 
-"I disagree, and here's why" is one of my favorite sentences.
+That tells me what happened and gives me something concrete to work on.
 
 ---
 
 ## <i data-lucide="target"></i> Bringing me a problem
 
-I don't need perfect requirements. Bring me in early enough to help shape the solution, and we'll work toward:
+I don't need perfect requirements. Bring me in early enough to help understand the problem and shape the solution. Here are some questions I tend to ask:
 
 1. **What are we trying to change?**
 2. **Who is this for?**
 3. **What do we know so far?**
-4. **What are we still trying to learn?**
-5. **What constraints are real?**
-6. **Who makes the final call when there's a tradeoff?**
-7. **What would make us confident enough to move forward?**
+4. **What do we still need to learn?**
+5. **What constraints are we working within?**
+6. **Who owns the decision when there's a tradeoff?**
+7. **How will we know the solution works?**
 
-We don't need all of these on day one. Sometimes finding them is the work.
+We don't need all the answers on day one. Finding them is often part of the engineering work.
 
-I like meetings with a job: a decision, a messy cross-team problem, or nuance that's faster to talk through than type. Three bullets beforehand make me much more useful. I'm sharpest in the morning.
+I prefer written context for things we can work through independently and meetings for decisions, complicated shared problems, or conversations where nuance matters. A few bullets beforehand help me prepare. I'm sharpest in the morning.
 
 ---
 
 ## <i data-lucide="sparkles"></i> What brings out my best work
 
-- a real problem, even a messy one
-- room to question the default
-- ownership with accountability
-- peers who care about craft without worshipping complexity
-- honest technical disagreement
-- decisions made in the open, with a clear owner
+- a meaningful problem to solve
+- room to investigate and question assumptions
+- ownership of technical decisions and their consequences
+- colleagues who share what they know and care about the quality of the work
+- constructive disagreement and clear decisions
 
-In return, you get structure, persistence, strong technical instincts, and more care than the ticket asked for.
+I bring structure to complicated problems, follow through on implementation, and care about whether the result is useful after I hand it off. I ask for help when I need expertise I don't have.
 
 ---
 
 ## <i data-lucide="handshake"></i> What I'm looking for
 
-Roles where senior engineers are expected to exercise technical judgment, shape systems, and stay close enough to the work to build. I'm a good fit if you need someone to own a data problem past the ticket boundary, improve systems while still shipping, and build with the next engineer in mind.
+I'm interested in senior engineering roles where I can design and build data systems, work through technical decisions with other engineers, and improve the systems teams already depend on.
 
-I'm happy to coordinate when it helps the engineering move, but I want my primary contribution to stay technical.
+I enjoy helping others understand complicated systems and coordinating across teams when it helps the work move forward. I want my primary contribution to remain technical and hands-on.
 
 ---
 
 ## <i data-lucide="coffee"></i> Outside the code
 
-I garden, cook, write, ride bikes, and run a small home server because apparently I needed another computer to be responsible for. I like understanding how things work well enough to make them work better, whether that's a pipeline, a garden bed, or a recipe.
+I garden, cook, write, ride bikes, and run a small home server. I enjoy learning how things work and finding ways to make them work better, whether it's a pipeline, a garden bed, or a recipe.
 
 ---
 
 ## <i data-lucide="circle-help"></i> Not sure how to approach me?
 
-Bring me the messy version: what you know, what you don't, and what you're trying to decide. We'll find the structure from there.
+Bring me what you know, what you don't, and what you're trying to figure out. We can work through it together.
 
 ---
 
-*Last updated: October 2026*
+*Last updated: November 2026*
