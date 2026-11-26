@@ -1,27 +1,27 @@
 # pipelinetools
 
-*the plumbing every pipeline kept rewriting*
+*shared code for recurring ETL work*
 
 ---
 
 ## The problem
 
-My team's ETL processes grew the way most do: each new script started as a copy of an older one. I kept seeing the same code in script after script: database connectors, credential handling, environment setup, project scaffolding. Each copy drifted a little from the last, and none of it lived in one place.
+I noticed the same database connectors, credential handling, environment setup, and project scaffolding across my team's ETL scripts. New scripts often started as copies of older ones, and each copy changed independently.
 
-I consolidated it into a shared library. Then a Python migration showed exactly what that duplication costs. Moving off Python 3.7 meant **182 legacy scripts had to be updated by hand** to run on Python 3.14. It was the same fix 182 times, because the shared logic had never actually been shared.
+I consolidated those recurring pieces into a shared library. A subsequent migration from Python 3.7 to 3.14 made the cost of duplication especially clear: **182 legacy scripts required manual updates**.
 
 ---
 
 ## The design
 
-PipelineTools consolidates those repeated pieces into one library that any pipeline running in the team's managed environment can use:
+I built PipelineTools so pipelines running in the team's managed environment could use the same implementation for:
 
 - database connectors and connection handling
-- project scaffolding: folders, files, repo setup
+- project scaffolding: folders, files, and repository setup
 - credential generation and rotation
 - environment variable management
 
-I kept it deliberately simple: a single entry point wrapping the patterns the team already relied on, plus new credential generation and rotation. The goal wasn't a framework. It was one copy of the plumbing, in one place.
+I used a single entry point around patterns the team already knew and added credential generation and rotation. I wanted to make recurring work easier to maintain without introducing a larger framework.
 
 ![PipelineTools architecture: pipelines import one shared library with four modules, running on a managed Python environment](/images/pipelinetools-architecture.svg)
 
@@ -29,32 +29,30 @@ I kept it deliberately simple: a single entry point wrapping the patterns the te
 
 ## Decisions
 
-**Own it in-house instead of adopting an external library.** I considered building on an externally managed repo and rejected it: it had no clear ownership and no distribution path. A shared dependency nobody owns turns into the next legacy problem.
+**Maintain the library within the team.** I considered an externally managed repository, but it lacked clear ownership and a distribution path. Keeping the library within the team gave us responsibility for the code our pipelines depended on.
 
-**Distribute through a shared path, for now.** Pipelines import the library from a shared location. It's the simplest option that works across every user and server, and it means a fix lands everywhere at once. It also means a mistake does.
+**Distribute through a shared location.** This was a practical way to make the library available across users and servers. A fix could be made in one place, but the tradeoff was that pipelines would also share the impact of a breaking change.
 
 ---
 
 ## The risk
 
-Centralizing code centralizes failure. Before, a bad change broke one script. Now a breaking change reaches every pipeline that imports the library.
-
-I contain that by managing the environment underneath it. Package versions are pinned, and the Python version is standardized across users and servers, so the library runs against one known set of dependencies instead of whatever each machine happens to have.
+Centralizing code concentrates the consequences of a mistake. To help manage that risk, I standardized the Python version and pinned package versions across the team's environment. That gave the library a known set of dependencies and reduced variation between machines. It did not eliminate the need for testing.
 
 ---
 
 ## In production
 
-PipelineTools runs behind a YAML-configured batch process and a Qualys API integration, where it handles credential rotation and endpoint ingestion.
+PipelineTools supports a YAML-configured batch process and an API integration, including credential rotation and endpoint ingestion.
 
 ---
 
 ## What I'd do next
 
-- **Tests first.** A library with this blast radius needs a test suite before it needs more features. Today, the pinned environment is the main safety net; tests would catch breaking changes before they ship instead of after.
-- **Versioned packaging.** I'm evaluating uv for packaging and distribution. Pipelines could then pin a library version instead of always running whatever is on the shared path, so upgrades become a choice instead of an event.
-- **Separate database work from project setup.** Database functions currently live alongside project scaffolding, so using a connector depends on setting up a project structure. I'd split them into independent modules and make scaffolding opt-in with a flag.
+- **Add automated tests.** The managed environment is the primary safeguard today. I'd prioritize testing shared behavior before adding more features.
+- **Introduce versioned packaging.** I'm evaluating uv for packaging and distribution so pipelines can control when they adopt a new library version.
+- **Separate database access from project setup.** I'd make scaffolding optional so a pipeline can use the database connectors without adopting the library's project structure.
 
 ---
 
-The point was never the library. It was making the next Python upgrade one change instead of 182.
+The point of the library is to make the next Python upgrade one shared change rather than another round of manual fixes.
