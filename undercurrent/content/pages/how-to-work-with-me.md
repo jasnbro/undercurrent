@@ -40,7 +40,7 @@ A few principles guide my work:
 
 ## <i data-lucide="message-square-text"></i> Communication and feedback
 
-I'm direct and curious. When an explanation doesn't hold together, I ask questions. I appreciate working with people who explain their reasoning, challenge my assumptions, and bring expertise I don't have.
+I ask a lot of questions when I'm learning a system, especially when something doesn't quite make sense to me. I appreciate working with people who explain their reasoning, challenge my assumptions, and bring expertise I don't have.
 
 I work best when we share context, agree on what we're trying to accomplish, and make tradeoffs explicit. I have opinions, but I'm willing to change my mind when the evidence supports a different approach.
 
@@ -52,7 +52,7 @@ I'd rather hear:
 
 > "In that meeting, you went three levels deeper than the decision required. The group lost the thread."
 
-That tells me what happened and gives me something concrete to work on.
+I can do something with that feedback.
 
 ---
 
@@ -96,7 +96,7 @@ I enjoy helping others understand complicated systems and coordinating across te
 
 ## <i data-lucide="coffee"></i> Outside the code
 
-I garden, cook, write, ride bikes, and run a small home server. I enjoy learning how things work and finding ways to make them work better, whether it's a pipeline, a garden bed, or a recipe.
+I garden, cook, write, ride bikes, and run a small home server. I like building things, watching how they work over time, and figuring out what I'd change. That applies to my garden as much as my code.
 
 ---
 
