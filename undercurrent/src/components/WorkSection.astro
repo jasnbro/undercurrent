@@ -6,7 +6,7 @@ interface Props { settings: Site['sections']['work']; works: Work[] }
 const { settings, works } = Astro.props;
 const published = works.filter(w => w.published).sort((a, b) => a.order - b.order || a.slug.localeCompare(b.slug));
 const featured = published.find(w => w.tier === 'featured')!;
-const groups = [{ tier: 'more', label: 'more work' }, { tier: 'side', label: 'side projects' }];
+const groups = [{ tier: 'more', label: 'more work', collapsible: true }, { tier: 'side', label: 'side projects', collapsible: false }];
 ---
 {settings.enabled && <section class="work-section" aria-labelledby="work-label">
   <h2 class="section-label ruled-label" id="work-label">{settings.label}</h2>
@@ -24,14 +24,21 @@ const groups = [{ tier: 'more', label: 'more work' }, { tier: 'side', label: 'si
   </article>
   {groups.map(group => {
     const entries = published.filter(w => w.tier === group.tier);
-    return entries.length > 0 && <div class="work-group">
-      <h3 class="subsection-label">{group.label}</h3>
-      {entries.map(work => <article class:list={['compact-work', { 'has-thumbnail': Boolean(work.image) }]}>
-        <div class="compact-heading"><h4 class="project-title"><a href={work.link.url}>{work.title}</a></h4><p class="project-tagline">{work.tagline}</p></div>
-        <div class="compact-summary"><p>{work.summary[0]}</p>{work.disclosure && <p class="disclosure">{work.disclosure}</p>}</div>
-        {work.image && <ContentImage image={work.image} class="work-thumbnail" />}
-        <ContentLink link={work.link} />
-      </article>)}
-    </div>;
+    if (entries.length === 0) return null;
+    const items = entries.map(work => <article class:list={['compact-work', { 'has-thumbnail': Boolean(work.image) }]}>
+      <div class="compact-heading"><h4 class="project-title"><a href={work.link.url}>{work.title}</a></h4><p class="project-tagline">{work.tagline}</p></div>
+      <div class="compact-summary"><p>{work.summary[0]}</p>{work.disclosure && <p class="disclosure">{work.disclosure}</p>}</div>
+      {work.image && <ContentImage image={work.image} class="work-thumbnail" />}
+      <ContentLink link={work.link} />
+    </article>);
+    return group.collapsible
+      ? <details class="work-group work-group-collapsible">
+          <summary><h3 class="subsection-label">{group.label} <span class="group-count">({entries.length})</span></h3></summary>
+          {items}
+        </details>
+      : <div class="work-group">
+          <h3 class="subsection-label">{group.label}</h3>
+          {items}
+        </div>;
   })}
 </section>}

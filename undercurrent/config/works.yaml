@@ -70,7 +70,7 @@ works:
     tagline: from one person's PC to the production floor
     tier: more
     order: 3
-    published: false   # no diagram needed; flip to true when the copy is final
+    published: true
     summary:
       - >-
         I reverse-engineered a Mercedes-Benz plant's Access database and
