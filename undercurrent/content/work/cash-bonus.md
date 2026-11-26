@@ -60,7 +60,15 @@ An incorrect decision can affect a customer. Reason codes let people review and 
 
 The production implementation defines campaign rules in SQL. I've started exploring a YAML-driven implementation so campaign definitions can be maintained as configuration. That version is not deployed.
 
-<!-- TODO(Jasmine): add "What I'd do differently" in your words. Every other case study has one, and this page shouldn't be the exception. -->
+---
+
+## What I'd do differently
+
+**Check real accounts before the first payout.** Test data proved the logic did what I wrote. Given more time, I'd have partnered with the business to run a select group of real accounts through the new system and confirm the outcomes matched what they expected.
+
+**Give transactions their own mart.** Tracking works from transaction data directly. I'd break that out into a separate table, filtered to the transactions Cash Bonus cares about with the needed columns already attached, and make tracking depend on it, so tracking starts from the right transactions instead of filtering and joining them itself.
+
+**Ship the summary table with the MVP.** Analysts needed one place to see an account's current state across every stage, so questions about a customer could be answered without tracing each stage separately. I'd make it part of the first release.
 
 ---
 
