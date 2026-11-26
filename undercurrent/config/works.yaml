@@ -42,19 +42,18 @@ works:
 
   - slug: disputes-refactor
     title: disputes data refactor
-    tagline: untangling the big nasty
+    tagline: a clearer data model for disputes reporting
     tier: more
     order: 1
     published: false   # flip to true once the diagram exists
     summary:
       - >-
-        Led a five-person refactor of Cash App's disputes reporting: a
-        50+ column table with competing identifiers, rebuilt into clean
-        entity tables and an analyst-ready data mart.
+        I led a refactor of Cash App's disputes reporting, separating two
+        versioned tables with competing identifiers into entity tables
+        and a reporting mart for analysts.
       - >-
-        The old table couldn't be trusted to check the new one, so we
-        validated against source system counts and added ongoing data
-        quality monitoring.
+        We validated against source system counts rather than reproducing
+        known gaps in the old model, then added ongoing data quality checks.
     link:
       label: view case study
       url: /work/disputes-refactor
@@ -73,35 +72,32 @@ works:
     published: false   # flip to true once the diagram exists
     summary:
       - >-
-        A Mercedes-Benz plant's parts coordination lived in one Access
-        database on one person's PC. I reverse-engineered it into a data
-        model for a web application that shows parts on the production
-        floor in near real time.
+        I reverse-engineered a Mercedes-Benz plant's Access database and
+        designed the data model for a web application that gives staff
+        near real-time visibility of parts on the production floor.
     link:
       label: view case study
       url: /work/hot-parts
     source: content/work/hot-parts.md
     image:
       src: /images/hot-parts-architecture.svg
-      alt: >- 
-        Hot Parts are in demand parts that are required to 
-        complete assembly of items being built on the shop floor
+      alt: >-
+        Hot Parts are in-demand parts required to complete assembly
+        on the production floor
   
   - slug: cash-bonus
     title: cash bonus
-    tagline: a promotions engine where every decision has a reason
+    tagline: traceable eligibility and reward decisions
     tier: featured
     order: 2
     published: false   # when the diagram exists: flip to true, and set pipelinetools to tier: more
     summary:
       - >-
-        Designed and built a bank's cash bonus system end to end, replacing
-        a single unaudited table with a staged pipeline where every
-        eligibility and reward decision is stored, versioned, and carries
-        a reason code.
+        I designed and built a cash bonus pipeline that records eligibility
+        and reward decisions with version history and reason codes.
       - >-
-        Double payment is prevented structurally: an append-only payout log
-        and a unique constraint mean a rerun can't pay the same reward twice.
+        I used an append-only payout log and a unique constraint to prevent
+        duplicate rewards on reruns.
     link:
       label: view case study
       url: /work/cash-bonus
