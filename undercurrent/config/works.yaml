@@ -18,17 +18,18 @@ works:
 
   - slug: pipelinetools
     title: pipelinetools
-    tagline: the plumbing every pipeline kept rewriting
+    tagline: shared code for recurring ETL work
     tier: featured
     order: 1
     published: true
     summary:
       - >-
-        A shared Python library for connectors, credentials, and environment
-        config, so ETL pipelines stop carrying their own copies.
+        I consolidated database connectors, credential handling, and
+        environment setup into a shared Python library for ETL pipelines.
       - >-
-        A Python migration that meant hand-fixing 182 scripts showed why it
-        matters: shared code should change once, not 182 times.
+        A Python migration required manual updates to 182 legacy scripts.
+        Centralizing that logic gives the team one place to make changes,
+        with a managed Python environment to help contain the risk.
     link:
       label: view case study
       url: /work/pipelinetools
@@ -111,28 +112,31 @@ works:
 
   - slug: mindless-meals
     title: mindless meals
-    tagline: cooking minus the extra thought
+    tagline: fewer decisions at mealtime
     tier: side
     order: 1
     published: true
     summary:
-      - A small system for remembering and discovering simple meals.
-    disclosure: Designed and directed by me, built with AI coding agents.
+      - >-
+        A recipe library and meal planner for finding meals I already enjoy,
+        discovering new ones, and deciding what to cook for the week.
+    disclosure: I designed the app; AI coding agents built it under my direction.
     link:
       label: view project
       url: https://meals.undercurrentlabs.dev/
 
   - slug: gym-log
     title: gym log
-    tagline: a workout plan you edit like a config file
+    tagline: a configurable home workout log
     tier: side
     order: 2
     published: true
     summary:
       - >-
-        A home gym log for the iPad. The plan, exercises, and equipment live
-        in YAML that CI validates; the database only records what was lifted.
-    disclosure: Designed and directed by me, built with AI coding agents.
+        I wanted to change my workout plan without changing the app. Plans,
+        exercises, and equipment live in YAML validated by CI. Postgres
+        records the workouts I complete.
+    disclosure: I designed the app; AI coding agents built it under my direction.
     link:
       label: view project
       url: https://gym.undercurrentlabs.dev/
