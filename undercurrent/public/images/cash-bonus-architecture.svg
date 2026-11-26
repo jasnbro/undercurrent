@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="Cash Bonus architecture: campaign terms feed three stages. Eligibility checks the promo code, account, customer and anti-gaming rules. Tracking checks deposits, balance and activity. Reward re-checks eligibility, account status and prior rewards right before paying. Every failed check records a reason code. Accounts that pass drive customer notifications and the business export of rewards to pay.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="Cash Bonus architecture: campaign terms feed three stages. Eligibility asks whether the account is eligible for the campaign. Tracking asks whether the money movement terms have been completed. Reward asks whether to pay. Every no records a reason code. Accounts to pay go to the business as a notification with an attachment.">
   <defs>
     <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0,0 L8,4 L0,8 z" fill="#9a94a8"/>
@@ -7,7 +7,7 @@
       .mono { font-family: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace; }
       .label { font-size: 14px; fill: #e8e0d0; }
       .sec { font-size: 11.5px; fill: #9a94a8; }
-      .item { font-size: 12px; fill: #b8b0c4; }
+      .q { font-size: 12px; fill: #b8b0c4; }
       .accent { fill: #d9e36b; }
       .muted { fill: #7d778b; }
       .box { fill: none; stroke: #cfc6b4; stroke-width: 1; }
@@ -21,44 +21,41 @@
   <text x="40" y="44" class="mono sec" letter-spacing="1">CASH BONUS / ARCHITECTURE</text>
 
   <!-- decision history -->
-  <rect x="200" y="160" width="500" height="270" class="hi"/>
-  <text x="220" y="188" class="mono sec" letter-spacing="1">DECISION HISTORY</text>
+  <rect x="200" y="170" width="500" height="240" class="hi"/>
+  <text x="220" y="198" class="mono sec" letter-spacing="1">DECISION HISTORY</text>
 
-  <rect x="220" y="206" width="142" height="156" class="box"/>
-  <text x="236" y="228" class="mono label">eligibility</text>
-  <text x="236" y="262" class="mono item">promo code</text>
-  <text x="236" y="286" class="mono item">account</text>
-  <text x="236" y="310" class="mono item">customer</text>
-  <text x="236" y="334" class="mono item">anti-gaming</text>
+  <rect x="220" y="214" width="142" height="120" class="box"/>
+  <text x="236" y="242" class="mono label">eligibility</text>
+  <text x="236" y="274" class="mono q">is this account</text>
+  <text x="236" y="292" class="mono q">eligible for the</text>
+  <text x="236" y="310" class="mono q">campaign?</text>
 
-  <rect x="382" y="206" width="142" height="156" class="box"/>
-  <text x="398" y="228" class="mono label">tracking</text>
-  <text x="398" y="262" class="mono item">deposits</text>
-  <text x="398" y="286" class="mono item">balance</text>
-  <text x="398" y="310" class="mono item">activity</text>
+  <rect x="382" y="214" width="142" height="120" class="box"/>
+  <text x="398" y="242" class="mono label">tracking</text>
+  <text x="398" y="274" class="mono q">have the money</text>
+  <text x="398" y="292" class="mono q">movement terms</text>
+  <text x="398" y="310" class="mono q">been completed?</text>
 
-  <rect x="544" y="206" width="142" height="156" class="box"/>
-  <text x="560" y="228" class="mono label">reward</text>
-  <text x="560" y="262" class="mono item">still eligible</text>
-  <text x="560" y="286" class="mono item">account status</text>
-  <text x="560" y="310" class="mono item accent">prior rewards</text>
+  <rect x="544" y="214" width="142" height="120" class="box"/>
+  <text x="560" y="242" class="mono label">reward</text>
+  <text x="560" y="274" class="mono q">should we</text>
+  <text x="560" y="292" class="mono q">pay them?</text>
 
-  <text x="220" y="404" class="mono accent" font-size="14">reason code on every no</text>
+  <text x="220" y="382" class="mono accent" font-size="14">reason code on every no</text>
 
   <!-- input and arrows -->
-  <rect x="40" y="267" width="140" height="56" class="box"/>
-  <text x="110" y="300" text-anchor="middle" class="mono label">campaign terms</text>
-  <path d="M180 295 H218" class="line" marker-end="url(#arrow)"/>
-  <path d="M362 295 H380" class="line" marker-end="url(#arrow)"/>
-  <path d="M524 295 H542" class="line" marker-end="url(#arrow)"/>
+  <rect x="40" y="246" width="140" height="56" class="box"/>
+  <text x="110" y="279" text-anchor="middle" class="mono label">campaign terms</text>
+  <path d="M180 274 H218" class="line" marker-end="url(#arrow)"/>
+  <path d="M362 274 H380" class="line" marker-end="url(#arrow)"/>
+  <path d="M524 274 H542" class="line" marker-end="url(#arrow)"/>
+  <path d="M686 274 H718" class="line" marker-end="url(#arrow)"/>
 
   <!-- downstream -->
-  <path d="M686 295 H712 V250 H728" class="line" marker-end="url(#arrow)"/>
-  <path d="M712 295 V340 H728" class="line" marker-end="url(#arrow)"/>
-  <rect x="730" y="226" width="150" height="48" class="box"/>
-  <text x="805" y="255" text-anchor="middle" class="mono label">notifications</text>
-  <rect x="730" y="316" width="150" height="48" class="box"/>
-  <text x="805" y="345" text-anchor="middle" class="mono label">business export</text>
+  <rect x="720" y="236" width="160" height="76" class="box"/>
+  <text x="736" y="262" class="mono label">business</text>
+  <text x="736" y="280" class="mono label">notification</text>
+  <text x="736" y="300" class="mono sec">with attachment</text>
 
   <text x="40" y="604" class="mono sec muted">sql · in production</text>
 </svg>

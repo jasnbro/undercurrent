@@ -32,7 +32,7 @@ Campaign rules from Marketing become versioned campaign terms. Every account the
 - **Tracking** checks whether the customer did what their tier asked, such as direct deposits, balance, and statement cycles, inside the tracking window
 - **Reward** checks the account again right before paying
 
-Accounts that pass Reward drive customer notifications and the export the business uses to pay.
+Accounts that pass Reward go to the business in a notification, with the rewards to pay attached.
 
 ---
 

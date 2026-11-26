@@ -102,9 +102,9 @@ works:
     image:
       src: /images/cash-bonus-architecture.svg
       alt: >-
-        Cash Bonus pipeline: campaign terms feed eligibility, tracking and
-        reward stages, where reward re-checks eligibility and prior rewards
-        before paying, with a reason code on every no
+        Cash Bonus pipeline: campaign terms feed three stages, eligibility,
+        tracking and reward, with a reason code on every no; accounts to pay
+        go to the business as a notification with an attachment
 
   - slug: mindless-meals
     title: mindless meals
