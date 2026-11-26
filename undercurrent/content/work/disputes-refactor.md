@@ -10,7 +10,7 @@ At Cash App, disputes reporting relied on a pair of versioned tables with more t
 
 Three problems made reporting difficult to maintain:
 
-- **Competing identifiers.** Multiple customer and transaction IDs made it unclear which keys to use when joining related data.
+- **Inconsistent identifiers.** Customers and transactions each had more than one ID, and which ones a record carried depended on the legacy code that produced it. Joining related data meant first working out which keys were actually there.
 - **Legacy data quality.** Joining historical records produced results that were difficult to interpret.
 - **Duplicated logic.** Analysts repeatedly wrote the same joins, creating opportunities for reporting logic to diverge.
 
@@ -26,7 +26,7 @@ I led the refactor, working with other engineers and colleagues who brought subj
 
 ## The approach
 
-We separated cases, transactions, and customers into entity tables with a canonical identifier for each. We cleaned the historical data and built a reporting mart containing the transaction information analysts needed, with the shared joins already handled.
+We separated cases, transactions, and customers into entity tables and made every identifier consistently available, instead of whichever ones a legacy code path happened to carry. We cleaned the historical data and built a reporting mart that does the joins correctly once, so analysts no longer had to choose keys themselves.
 
 ---
 
