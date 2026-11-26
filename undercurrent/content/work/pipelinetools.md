@@ -1,6 +1,6 @@
 # pipelinetools
 
-*shared code for recurring ETL work*
+*making shared logic easier to maintain*
 
 ---
 
@@ -8,7 +8,7 @@
 
 I noticed the same database connectors, credential handling, environment setup, and project scaffolding across my team's ETL scripts. New scripts often started as copies of older ones, and each copy changed independently.
 
-I consolidated those recurring pieces into a shared library. A subsequent migration from Python 3.7 to 3.14 made the cost of duplication especially clear: **182 legacy scripts required manual updates**.
+I consolidated those recurring pieces into a shared library. Later, when we migrated from Python 3.7 to 3.14, we had to update **182 legacy scripts by hand**. That made the maintenance cost of keeping so many copies very clear.
 
 ---
 
@@ -55,4 +55,4 @@ PipelineTools supports a YAML-configured batch process and an API integration, i
 
 ---
 
-The point of the library is to make the next Python upgrade one shared change rather than another round of manual fixes.
+I'd rather spend the next Python upgrade working through the changes themselves than finding every place the same code was copied.
