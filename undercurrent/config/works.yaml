@@ -92,15 +92,19 @@ works:
         I designed and built a cash bonus pipeline that records eligibility
         and reward decisions with version history and reason codes.
       - >-
-        I used an append-only payout log and a unique constraint to prevent
-        duplicate payout records on reruns.
+        Before paying, the pipeline checks prior rewards. Anyone already
+        rewarded is disqualified with a reason code, so a rerun doesn't pay
+        twice.
     link:
       label: view case study
       url: /work/cash-bonus
     source: content/work/cash-bonus.md
     image:
       src: /images/cash-bonus-architecture.svg
-      alt: Automated campaign management, tracking and rewarding processes.
+      alt: >-
+        Cash Bonus pipeline: versioned campaign terms feed eligibility, tier
+        tracking and rewards stages with a reason code on every row, and a
+        prior reward check disqualifies customers already rewarded
 
   - slug: mindless-meals
     title: mindless meals

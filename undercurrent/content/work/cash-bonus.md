@@ -26,7 +26,7 @@ I organized the pipeline into stages and retained their outputs so a reward deci
 
 Eligibility and reward decisions are versioned and recorded with reason codes. I wanted the data to explain why a customer didn't qualify as clearly as it explains why another customer did.
 
-<!-- TODO(Jasmine): list the stages in plain words (e.g. qualifying deposits → eligibility → tier → payout), and name the stack (SQL engine, orchestration) where it explains the build. -->
+Campaign rules from Marketing become versioned campaign terms. From there, three stages run in order: eligibility decides who qualifies, tier tracking follows each customer's activity to the tier they reach, and rewards decides who gets paid. Downstream, the rewards drive customer notifications and the export the business uses to pay.
 
 ---
 
@@ -34,13 +34,13 @@ Eligibility and reward decisions are versioned and recorded with reason codes. I
 
 **Record why a decision was made.** Storing the result alone would have been simpler, but it wouldn't help someone understand why a customer qualified or didn't. I chose to keep the reasons with the decisions so reviewing an outcome doesn't require reconstructing the logic from scratch.
 
-**Account for reruns in the design.** Pipelines sometimes need to run again after a failure or correction. I used an append-only payout log and a unique constraint to guard against duplicate payout records. That safeguard belongs in the data model rather than depending solely on operating procedures.
+**Check prior rewards before paying.** Pipelines get rerun after a failure or a correction. Before anyone is paid, the rewards stage checks whether that customer was already rewarded. If they were, they're marked disqualified with a reason code instead of being paid again, so a would-be duplicate shows up in the data as an explained no.
 
 ---
 
 ## The risk
 
-An incorrect decision can affect a customer. Reason codes help people review and investigate outcomes, while the payout log and database constraint address duplication during reruns. Those controls are part of the design, not a substitute for validating the business logic.
+An incorrect decision can affect a customer. Reason codes let people review and investigate any outcome, and the prior-reward check keeps a rerun from paying someone twice. Neither replaces validating the business logic itself.
 
 <!-- TODO(Jasmine): how was it validated before the first real payouts? Parallel run, sample review with Marketing, reconciliation against source? -->
 
@@ -50,7 +50,7 @@ An incorrect decision can affect a customer. Reason codes help people review and
 
 - The SQL pipeline is in production and supports customer payouts
 - Eligibility and reward outcomes retain their reasons and version history
-- Database-level safeguards address duplicate payout records
+- Customers who were already rewarded are disqualified with a reason code, not paid again
 
 ---
 

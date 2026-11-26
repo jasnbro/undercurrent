@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="Cash Bonus architecture, read left to right. Campaign rules from marketing become versioned campaign terms. Terms feed a decision history that holds three stages: eligibility, tier tracking, and rewards. Every stage stores each yes and each no, versioned, with a reason code on every row. The rewards table feeds downstream processes: a reward audience that drives customer notifications, and a business export of rewards to pay. Before paying, the rewards stage checks prior rewards: a customer already rewarded is disqualified with a reason code instead of being paid again.">
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 z" fill="#9a94a8"/>
+    </marker>
+    <style>
+      .mono { font-family: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace; }
+      .serif { font-family: "Cormorant Garamond", "EB Garamond", Georgia, serif; }
+      .label { font-size: 14px; fill: #e8e0d0; }
+      .sec { font-size: 11.5px; fill: #9a94a8; }
+      .accent { font-size: 14px; fill: #d9e36b; }
+      .box { fill: none; stroke: #cfc6b4; stroke-width: 1; }
+      .hi { fill: #2e2b38; stroke: #d9e36b; stroke-width: 1; }
+      .line { fill: none; stroke: #9a94a8; stroke-width: 1; }
+      .muted { fill: #7d778b; }
+      .rule { stroke: #3a3644; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect width="900" height="620" fill="#24212c"/>
+
+  <!-- header -->
+  <text x="40" y="44" class="mono sec" letter-spacing="1">CASH BONUS / ARCHITECTURE</text>
+
+  <g transform="translate(0,-40)">
+    <!-- inputs -->
+    <rect x="40" y="140" width="140" height="60" class="box"/>
+    <text x="52" y="166" class="mono label">campaign rules</text>
+    <text x="52" y="186" class="mono label">(marketing)</text>
+    <path d="M110 200 V229" class="line" marker-end="url(#arrow)"/>
+
+    <rect x="40" y="230" width="140" height="64" class="box"/>
+    <text x="52" y="258" class="mono label">campaign terms</text>
+    <text x="52" y="278" class="mono sec">versioned</text>
+
+    <!-- decision history container -->
+    <rect x="205" y="150" width="480" height="210" class="hi"/>
+    <path d="M180 262 H220" class="line" marker-end="url(#arrow)"/>
+    <text x="221" y="178" class="mono label">decision history</text>
+    <text x="221" y="198" class="mono sec">every yes and every no, versioned</text>
+
+    <rect x="221" y="222" width="134" height="80" class="box"/>
+    <text x="233" y="248" class="mono label">eligibility</text>
+    <text x="233" y="268" class="mono sec">yes / no</text>
+    <text x="233" y="284" class="mono sec">+ reason</text>
+
+    <rect x="378" y="222" width="134" height="80" class="box"/>
+    <text x="390" y="248" class="mono label">tier tracking</text>
+    <text x="390" y="268" class="mono sec">activity → tier</text>
+    <text x="390" y="284" class="mono sec">+ reward-ready</text>
+
+    <rect x="535" y="222" width="134" height="80" class="box"/>
+    <text x="547" y="248" class="mono label">rewards</text>
+    <text x="547" y="268" class="mono sec">ready / no</text>
+    <text x="547" y="284" class="mono sec">+ reason</text>
+
+    <path d="M355 262 H377" class="line" marker-end="url(#arrow)"/>
+    <path d="M512 262 H534" class="line" marker-end="url(#arrow)"/>
+
+    <text x="221" y="340" class="mono accent">reason code on every row</text>
+
+    <!-- downstream, reading the rewards table -->
+    <path d="M669 262 H692 V178 H709" class="line" marker-end="url(#arrow)"/>
+    <path d="M692 262 V370 H709" class="line" marker-end="url(#arrow)"/>
+
+    <rect x="710" y="150" width="150" height="56" class="box"/>
+    <text x="722" y="174" class="mono label">reward audience</text>
+    <text x="722" y="193" class="mono sec">who to notify</text>
+    <path d="M785 206 V245" class="line" marker-end="url(#arrow)"/>
+
+    <rect x="710" y="246" width="150" height="56" class="box"/>
+    <text x="722" y="270" class="mono label">notifications</text>
+    <text x="722" y="289" class="mono sec">customer messages</text>
+
+    <rect x="710" y="342" width="150" height="56" class="box"/>
+    <text x="722" y="366" class="mono label">business export</text>
+    <text x="722" y="385" class="mono sec">rewards to pay</text>
+  </g>
+
+  <!-- rerun safety -->
+  <line x1="40" y1="420" x2="860" y2="420" class="rule"/>
+  <text x="40" y="452" class="mono sec muted" letter-spacing="1">IN THE REWARDS STAGE, BEFORE PAYING</text>
+  <rect x="40" y="468" width="380" height="64" class="hi"/>
+  <text x="64" y="496" class="mono accent">prior reward check</text>
+  <text x="64" y="518" class="mono sec">was this customer already rewarded?</text>
+  <path d="M420 500 H456" class="line" marker-end="url(#arrow)"/>
+  <rect x="460" y="468" width="400" height="64" class="box"/>
+  <text x="484" y="496" class="mono label">already rewarded → disqualified</text>
+  <text x="484" y="518" class="mono sec">reason code recorded, not paid again</text>
+
+  <text x="40" y="604" class="mono sec muted">sql · in production</text>
+</svg>
