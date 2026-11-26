@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="Disputes data refactor: two versioned tables with competing identifiers, which analysts joined separately in every query, were split into case, transaction and customer tables with one canonical identifier each, feeding one reporting mart. The mart was validated against source system counts at cutover and monitored afterward with data quality checks.">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9a94a8"/>
+    </marker>
+    <style>
+      .mono { font-family: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace; }
+      .serif { font-family: "Cormorant Garamond", "EB Garamond", Georgia, serif; }
+      .box { fill: none; stroke: #cfc6b4; stroke-width: 1; }
+      .dashed { stroke-dasharray: 5 5; stroke: #7d778b; }
+      .mod { fill: #2e2b38; stroke: #d9e36b; stroke-width: 1; }
+      .label { fill: #e8e0d0; font-size: 14px; }
+      .sub { fill: #9a94a8; font-size: 11.5px; }
+      .muted { fill: #7d778b; }
+      .accent { fill: #d9e36b; }
+      .line { stroke: #9a94a8; stroke-width: 1; fill: none; }
+    </style>
+  </defs>
+
+  <rect width="900" height="620" fill="#24212c"/>
+
+  <text x="60" y="44" class="mono sub" letter-spacing="1">DISPUTES / DATA MODEL</text>
+
+  <!-- before -->
+  <text x="60" y="84" class="mono sub muted" letter-spacing="1">BEFORE</text>
+  <rect x="60" y="96" width="260" height="150" class="box dashed"/>
+  <text x="84" y="140" class="serif" font-size="28" fill="#9a94a8">the big nasty</text>
+  <text x="84" y="166" class="mono sub">two versioned tables</text>
+  <text x="84" y="186" class="mono sub">50+ columns: cases,</text>
+  <text x="84" y="204" class="mono sub">transactions, customers</text>
+  <text x="84" y="228" class="mono sub muted">competing ids</text>
+
+  <path d="M90,246 L90,402" class="line dashed"/>
+  <path d="M90,290 L108,290" class="line dashed" marker-end="url(#arrow)"/>
+  <path d="M90,346 L108,346" class="line dashed" marker-end="url(#arrow)"/>
+  <path d="M90,402 L108,402" class="line dashed" marker-end="url(#arrow)"/>
+  <rect x="110" y="270" width="210" height="40" class="box dashed"/>
+  <text x="215" y="295" text-anchor="middle" class="mono label muted">analyst query</text>
+  <rect x="110" y="326" width="210" height="40" class="box dashed"/>
+  <text x="215" y="351" text-anchor="middle" class="mono label muted">analyst query</text>
+  <rect x="110" y="382" width="210" height="40" class="box dashed"/>
+  <text x="215" y="407" text-anchor="middle" class="mono label muted">analyst query</text>
+  <text x="60" y="450" class="mono sub muted">same joins, rebuilt in every query</text>
+
+  <!-- refactor -->
+  <path d="M330,170 L372,170" class="line" marker-end="url(#arrow)"/>
+
+  <!-- after -->
+  <text x="380" y="84" class="mono sub muted" letter-spacing="1">AFTER</text>
+  <rect x="380" y="96" width="140" height="70" class="box"/>
+  <text x="450" y="128" text-anchor="middle" class="mono label">cases</text>
+  <text x="450" y="150" text-anchor="middle" class="mono sub">one canonical id</text>
+  <rect x="540" y="96" width="140" height="70" class="box"/>
+  <text x="610" y="128" text-anchor="middle" class="mono label">transactions</text>
+  <text x="610" y="150" text-anchor="middle" class="mono sub">one canonical id</text>
+  <rect x="700" y="96" width="140" height="70" class="box"/>
+  <text x="770" y="128" text-anchor="middle" class="mono label">customers</text>
+  <text x="770" y="150" text-anchor="middle" class="mono sub">one canonical id</text>
+
+  <path d="M450,166 L450,206" class="line" marker-end="url(#arrow)"/>
+  <path d="M610,166 L610,206" class="line" marker-end="url(#arrow)"/>
+  <path d="M770,166 L770,206" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="380" y="210" width="460" height="96" class="mod"/>
+  <text x="404" y="252" class="serif" font-size="30" fill="#e8e0d0">reporting mart</text>
+  <text x="404" y="280" class="mono sub">shared joins built once · cleaned history</text>
+
+  <path d="M610,306 L610,346" class="line" marker-end="url(#arrow)"/>
+  <rect x="380" y="350" width="460" height="50" class="box"/>
+  <text x="610" y="380" text-anchor="middle" class="mono label">analysts &amp; reporting</text>
+
+  <!-- validation -->
+  <text x="60" y="500" class="mono sub muted" letter-spacing="1">VALIDATION</text>
+  <rect x="60" y="512" width="380" height="60" class="mod"/>
+  <text x="84" y="538" class="mono label accent">source system counts</text>
+  <text x="84" y="558" class="mono sub">at cutover, not reconciled to the old tables</text>
+  <rect x="460" y="512" width="380" height="60" class="box"/>
+  <text x="484" y="538" class="mono label">anomalo checks</text>
+  <text x="484" y="558" class="mono sub">ongoing data quality monitoring</text>
+
+  <path d="M250,512 L250,480 L356,480 L356,258 L378,258" class="line" marker-end="url(#arrow)"/>
+  <path d="M840,542 L862,542 L862,258 L842,258" class="line" marker-end="url(#arrow)"/>
+
+  <text x="60" y="604" class="mono sub muted">snowflake · prefect · 2022–2023</text>
+</svg>

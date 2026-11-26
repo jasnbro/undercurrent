@@ -61,15 +61,16 @@ works:
     image:
       src: /images/disputes-architecture.svg
       alt: >-
-        Processes for managing disputes data needed for
-        regulatory and operational reporting
+        Disputes data model: two versioned tables split into case,
+        transaction and customer tables feeding one reporting mart,
+        validated against source system counts
  
   - slug: hot-parts
     title: hot parts
     tagline: from one person's PC to the production floor
     tier: more
     order: 2
-    published: false   # flip to true once the diagram exists
+    published: false   # no diagram needed; flip to true when the copy is final
     summary:
       - >-
         I reverse-engineered a Mercedes-Benz plant's Access database and
@@ -79,11 +80,6 @@ works:
       label: view case study
       url: /work/hot-parts
     source: content/work/hot-parts.md
-    image:
-      src: /images/hot-parts-architecture.svg
-      alt: >-
-        Hot Parts are in-demand parts required to complete assembly
-        on the production floor
   
   - slug: cash-bonus
     title: cash bonus

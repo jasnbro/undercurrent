@@ -26,7 +26,7 @@
   <rect x="60" y="96" width="240" height="56" class="box"/>
   <text x="180" y="129" text-anchor="middle" class="mono label">yaml-configured batch</text>
   <rect x="330" y="96" width="240" height="56" class="box"/>
-  <text x="450" y="129" text-anchor="middle" class="mono label">qualys api integration</text>
+  <text x="450" y="129" text-anchor="middle" class="mono label">api integration</text>
   <rect x="600" y="96" width="240" height="56" class="box dashed"/>
   <text x="720" y="129" text-anchor="middle" class="mono label muted">future etl pipelines</text>
 
