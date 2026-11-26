@@ -26,7 +26,13 @@ I organized the pipeline into stages and retained their outputs so a reward deci
 
 Eligibility and reward decisions are versioned and recorded with reason codes. I wanted the data to explain why a customer didn't qualify as clearly as it explains why another customer did.
 
-Campaign rules from Marketing become versioned campaign terms. From there, three stages run in order: eligibility decides who qualifies, tier tracking follows each customer's activity to the tier they reach, and rewards decides who gets paid. Downstream, the rewards drive customer notifications and the export the business uses to pay.
+Campaign rules from Marketing become versioned campaign terms. Every account then moves through three stages, and it has to pass every check at a stage to reach the next:
+
+- **Eligibility** checks the account when it opens: the promo code, the account and its owner, anti-gaming rules, and whether it opened during the offer period
+- **Tracking** checks whether the customer did what their tier asked, such as direct deposits, balance, and statement cycles, inside the tracking window
+- **Reward** checks the account again right before paying
+
+Accounts that pass Reward drive customer notifications and the export the business uses to pay.
 
 ---
 
@@ -34,13 +40,13 @@ Campaign rules from Marketing become versioned campaign terms. From there, three
 
 **Record why a decision was made.** Storing the result alone would have been simpler, but it wouldn't help someone understand why a customer qualified or didn't. I chose to keep the reasons with the decisions so reviewing an outcome doesn't require reconstructing the logic from scratch.
 
-**Check prior rewards before paying.** Pipelines get rerun after a failure or a correction. Before anyone is paid, the rewards stage checks whether that customer was already rewarded. If they were, they're marked disqualified with a reason code instead of being paid again, so a would-be duplicate shows up in the data as an explained no.
+**Check again right before paying.** Eligibility is decided when an account opens, and a lot can change before payout. The Reward stage reruns the checks that matter at that moment: the account still qualifies, it's in good standing, and the customer hasn't already been paid a bonus of the same type, including from an earlier campaign. An account can be eligible on day one and still be disqualified at payout, and when it is, the reason is recorded. Accounts that were already paid or disqualified aren't picked up again, so a rerun doesn't pay twice.
 
 ---
 
 ## The risk
 
-An incorrect decision can affect a customer. Reason codes let people review and investigate any outcome, and the prior-reward check keeps a rerun from paying someone twice. Neither replaces validating the business logic itself.
+An incorrect decision can affect a customer. Reason codes let people review and investigate any outcome, and the checks at payout catch what changed after the account was found eligible. Neither replaces validating the business logic itself.
 
 <!-- TODO(Jasmine): how was it validated before the first real payouts? Parallel run, sample review with Marketing, reconciliation against source? -->
 
@@ -50,7 +56,7 @@ An incorrect decision can affect a customer. Reason codes let people review and 
 
 - The SQL pipeline is in production and supports customer payouts
 - Eligibility and reward outcomes retain their reasons and version history
-- Customers who were already rewarded are disqualified with a reason code, not paid again
+- Payout re-checks each account, so changes after opening and prior rewards are caught before money moves
 
 ---
 

@@ -92,9 +92,9 @@ works:
         I designed and built a cash bonus pipeline that records eligibility
         and reward decisions with version history and reason codes.
       - >-
-        Before paying, the pipeline checks prior rewards. Anyone already
-        rewarded is disqualified with a reason code, so a rerun doesn't pay
-        twice.
+        Payout checks every account again right before paying, including
+        prior rewards, so an account can be eligible on day one and still be
+        disqualified, with a reason, at payout.
     link:
       label: view case study
       url: /work/cash-bonus
@@ -102,9 +102,9 @@ works:
     image:
       src: /images/cash-bonus-architecture.svg
       alt: >-
-        Cash Bonus pipeline: versioned campaign terms feed eligibility, tier
-        tracking and rewards stages with a reason code on every row, and a
-        prior reward check disqualifies customers already rewarded
+        Cash Bonus pipeline: versioned campaign terms feed eligibility,
+        tracking and reward stages, each listing its checks, with a reason
+        code recorded whenever a check fails
 
   - slug: mindless-meals
     title: mindless meals
